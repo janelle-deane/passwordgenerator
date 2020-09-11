@@ -64,6 +64,7 @@ console.log(chosenArray);
 console.log(arrayLength);
 
 // create a conditional situational that saves the chosen char from our confirm statement
+// Add loop that encompasses arrays and is dedicated by first prompt 
 for (var i =0; i<charLength; i++){
 var index = Math.floor(Math.random()*arrayLength);
  var part = chosenArray[index];
@@ -72,12 +73,11 @@ var index = Math.floor(Math.random()*arrayLength);
 // push each time to the new password
 passwordArray.push(...part);
 }
-console.log(passwordArray)
+console.log(passwordArray);
 
-// Add loop that encompasses arrays and is dedicated by first prompt
-
-// conver array to string and alert
-// alert(passwordArray.join(''))
+// convert array to string and alert
+alert("Your new Password is: " + passwordArray.join(''));
+console.log (passwordArray.join(''));
 
 // Add validations to make sure at least one type character is selected and alert the user that they need to chose 
 
