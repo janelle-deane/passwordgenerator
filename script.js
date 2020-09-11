@@ -13,6 +13,7 @@ function writePassword() {
 // To Do: 
 // Create generatePassword function and returns all of my code should live inside this code
 
+function generatePassword(){
 // Create arrays with all needed characters (lowercase, lowercase, numeric and special)
 var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -25,73 +26,93 @@ var chosenArray =[];
 // create a new array with to hold final password 
 var passwordArray=[]; 
 
+// Define prompt variables:
+var charSpecial = false; 
+var charNumeric = false; 
+var charUpper = false; 
+var charLower = false; 
+
+
 // Create a series of prompts with conditionals:
-// 1. var= Prompt-length of password (validation: 8-128 characters) (save to variable)
+// 1. var= Prompt-length of password (validation: 8-128 characters) **Is there a way to loop back to orginal prompt if condition is not met?
 var charLength = prompt ("How many characters do you want you password? Please enter a number between 8-128: ");
 console.log (charLength)
-if (charLength<= 8 || charLength >=129){
-  alert("Please enter a number 8-128")
-}
-else{
-// 2.Confirm-Special Characters?
-var charSpecial =confirm ("Do you want special characters?")
-console.log(charSpecial)
-if (charSpecial===true){
-  chosenArray.push(...specialCharacter); 
-  arrayLength= arrayLength + 31;
-}; 
+if (charLength >= 8 && charLength <=129){
 
-// 3.Confirm-Numeric Characters?
-var charNumeric =confirm ("Do you want numbers?")
-console.log(charNumeric)
-if (charNumeric===true){
-  chosenArray.push(...numeric); 
-  arrayLength=arrayLength + 10;
-}; 
-// 4.Confirm-UpperCase Characters?
-var charUpper =confirm ("Do you want UPPER CASE letters?")
-console.log(charUpper)
-if (charUpper===true){
-  chosenArray.push(...alphaUpper); 
-  arrayLength=arrayLength + 26;
-}; 
-// 5.Confirm-LowerCharacters?
-var charLower =confirm ("Do you want lower case letters?")
-console.log(charLower)
-if (charLower===true){
-  chosenArray.push(...alphaLower); 
-  arrayLength=arrayLength + 26;
-}; 
+        // 2.Confirm-Special Characters?
+        charSpecial =confirm ("Do you want special characters?")
+        console.log(charSpecial)
+ 
 
-// Check combination Array & array length
-console.log(chosenArray);
-console.log(arrayLength);
+        // 3.Confirm-Numeric Characters?
+        charNumeric =confirm ("Do you want numbers?")
+        console.log(charNumeric)
 
-// create an else statement requiring one character statement--having issues
-// else {
-//   alert("Please choose one Character trait to be included in your password")
-// };
+        // 4.Confirm-UpperCase Characters?
+        charUpper =confirm ("Do you want UPPER CASE letters?")
+        console.log(charUpper)
 
-// create a conditional situational that saves the chosen char from our confirm statement
-// Add loop that encompasses arrays and is dedicated by first prompt 
-for (var i =0; i<charLength; i++){
-var index = Math.floor(Math.random()*arrayLength);
- var part = chosenArray[index];
- console.log(part);
-
-// push each time to the new password
-passwordArray.push(...part);
-}
-console.log(passwordArray);
-
-// convert array to string and alert
-alert("Your new Password is: " + passwordArray.join(''));
-console.log (passwordArray.join(''));
+        // 5.Confirm-LowerCharacters?
+        charLower =confirm ("Do you want lower case letters?")
+        console.log(charLower)
 
 // Add validations to make sure at least one type character is selected and alert the user that they need to chose 
 
-// Add event listener to generate button
+// add validation to after logic       
+        while(charLower===false && charNumeric===false && charSpecial===false && charUpper===false) {
+          alert("Please choose one Character trait to be included in your password")
+          charSpecial =confirm ("Do you want special characters?")
+          charNumeric =confirm ("Do you want numbers?")
+          charUpper =confirm ("Do you want UPPER CASE letters?")
+          charLower =confirm ("Do you want lower case letters?")
+        }
 
-// add validation to after logic
-generateBtn.addEventListener("click", writePassword);
+        if (charSpecial===true){
+          chosenArray.push(...specialCharacter); 
+          arrayLength= arrayLength + 31;
+        };
+
+        if (charNumeric===true){
+          chosenArray.push(...numeric); 
+          arrayLength=arrayLength + 10;
+        }; 
+
+        if (charUpper===true){
+          chosenArray.push(...alphaUpper); 
+          arrayLength=arrayLength + 26;
+        }; 
+
+        if (charLower===true){
+          chosenArray.push(...alphaLower); 
+          arrayLength=arrayLength + 26;
+        }; 
+
+        // Check combination Array & array length
+        console.log(chosenArray);
+        console.log(arrayLength);
+
+        // create an else statement requiring one character statement--having issues
+        // else {
+        //   
+
+        // Add loop that encompasses arrays and is dedicated by first prompt 
+        for (var i =0; i<charLength; i++){
+        var index = Math.floor(Math.random()*arrayLength);
+        var part = chosenArray[index];
+        console.log(part);
+
+        // push each time to the new password
+        passwordArray.push(...part);
+        }
+        console.log(passwordArray);
+
+        // convert array to string and alert
+        alert("Your new Password is: " + passwordArray.join(''));
+        console.log (passwordArray.join(''));
+
+}else{
+  alert("Please enter a number 8-128")}; 
+
 }
+// Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword);
