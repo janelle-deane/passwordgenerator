@@ -25,10 +25,14 @@ var chosenArray =[];
 // create a new array with to hold final password 
 var passwordArray=[]; 
 
-// Create a series of prompts:
+// Create a series of prompts with conditionals:
 // 1. var= Prompt-length of password (validation: 8-128 characters) (save to variable)
 var charLength = prompt ("How many characters do you want you password? Please enter a number between 8-128: ");
 console.log (charLength)
+if (charLength<= 8 || charLength >=129){
+  alert("Please enter a number 8-128")
+}
+else{
 // 2.Confirm-Special Characters?
 var charSpecial =confirm ("Do you want special characters?")
 console.log(charSpecial)
@@ -63,6 +67,11 @@ if (charLower===true){
 console.log(chosenArray);
 console.log(arrayLength);
 
+// create an else statement requiring one character statement--having issues
+// else {
+//   alert("Please choose one Character trait to be included in your password")
+// };
+
 // create a conditional situational that saves the chosen char from our confirm statement
 // Add loop that encompasses arrays and is dedicated by first prompt 
 for (var i =0; i<charLength; i++){
@@ -85,3 +94,4 @@ console.log (passwordArray.join(''));
 
 // add validation to after logic
 generateBtn.addEventListener("click", writePassword);
+}
