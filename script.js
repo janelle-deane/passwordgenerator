@@ -64,10 +64,10 @@ console.log(chosenArray);
 console.log(arrayLength);
 
 // create a conditional situational that saves the chosen char from our confirm statement
-for (var i =0; i<arrayLength; i++;){
-var index = Math.floor(Math.random()*arrayLength);
- var part = chosenArray[index];
- console.log(part);
+// for (var i =0; i<arrayLength; i++;){
+// var index = Math.floor(Math.random()*arrayLength);
+//  var part = chosenArray[index];
+//  console.log(part);
 
 // push each time to the new password
 passwordArray.push(...part);
