@@ -31,4 +31,4 @@ Push each time to new password and turn array into a string
 
 Add validations to make sure at least one type character is selected and alert the user that they need to chose 
 
-Add event listener to generate button**
+Add event listener to generate button
