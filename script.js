@@ -19,18 +19,16 @@ var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M
 var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numeric =["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]; 
 var specialCharacter = ["\'", "\"", "#", "$", "%", "&", "!", "(", ")", "*", "+", "\&", "{", "'", "|", "}", "~", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^"];
-// Define array length since it will vary with answers (lower/upper will add by 26, special 31 and numbers 10 )
-var arrayLength = 0; 
 // create a new var that holds all of the chosen characters
 var chosenArray =[]; 
 // create a new array with to hold final password 
 var passwordArray=[]; 
 
 // Define prompt variables:
-var charSpecial = false; 
-var charNumeric = false; 
-var charUpper = false; 
-var charLower = false; 
+charSpecial = false; 
+charNumeric = false; 
+charUpper = false; 
+charLower = false; 
 
 
 // Create a series of prompts with conditionals:
@@ -69,35 +67,31 @@ if (charLength >= 8 && charLength <=129){
 
         if (charSpecial===true){
           chosenArray.push(...specialCharacter); 
-          arrayLength= arrayLength + 31;
         };
 
         if (charNumeric===true){
           chosenArray.push(...numeric); 
-          arrayLength=arrayLength + 10;
         }; 
 
         if (charUpper===true){
           chosenArray.push(...alphaUpper); 
-          arrayLength=arrayLength + 26;
         }; 
 
         if (charLower===true){
           chosenArray.push(...alphaLower); 
-          arrayLength=arrayLength + 26;
         }; 
 
         // Check combination Array & array length
         console.log(chosenArray);
-        console.log(arrayLength);
+        
 
         // create an else statement requiring one character statement--having issues
         // else {
         //   
 
         // Add loop that encompasses arrays and is dedicated by first prompt 
-        for (var i =0; i<charLength; i++){
-        var index = Math.floor(Math.random()*arrayLength);
+        for (var i =0; i<chosenArray.length; i++){
+        var index = Math.floor(Math.random()*chosenArray.length);
         var part = chosenArray[index];
         console.log(part);
 
@@ -109,6 +103,7 @@ if (charLength >= 8 && charLength <=129){
         // convert array to string and alert
         alert("Your new Password is: " + passwordArray.join(''));
         console.log (passwordArray.join(''));
+        return (passwordArray.join(''));
 
 }else{
   alert("Please enter a number 8-128")}; 
